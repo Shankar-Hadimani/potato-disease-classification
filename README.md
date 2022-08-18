@@ -11,6 +11,7 @@ docker pull tensorflow/serving
 ## Setup for Python:
 
 ```
+conda create -n tensorflow python=3.10
 pip install -r api/requirements.txt
 ```
 
@@ -115,7 +116,7 @@ npm run start
 1. Create a [GCP account]
 2. Create a [Project on GCP]
 3. Create a [GCP bucket]
-4. Upload the potatoes.h5 model in the bucket in the path `models/potatos.h5`.
+4. Upload the potatoes.h5 model from `gcp/saved_model_h5` directory into the bucket as `models/potatoes.h5`.
 5. Install Google Cloud SDK ([Setup instructions]
 6. Authenticate with Google Cloud SDK.
 
@@ -127,7 +128,7 @@ gcloud auth login
 
 ```bash
 cd gcp
-gcloud functions deploy predict_lite --runtime python38 --trigger-http --memory 512 --project project_id
+gcloud functions deploy predict --runtime python38 --trigger-http --memory 512 --project project_id
 ```
 
 8. Your model is now deployed.
